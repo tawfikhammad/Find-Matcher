@@ -4,7 +4,7 @@ import os
 from pdf2txt import pdf2text  
 
 # Initialize model and data
-folder_path = r'project\find matching cases\CourtCases_txt'
+folder_path = r'CourtCases_txt'
 model, document_embeddings, file_names = initialize_model_and_data(folder_path)
 
 st.title("Legal Document Similarity Finder")
