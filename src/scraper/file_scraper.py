@@ -3,15 +3,14 @@ from bs4 import BeautifulSoup
 from typing import List, Tuple
 from urllib.parse import urljoin
 import requests
-from..config import settings
+from config import settings
 
 class PDFScraper:
     def __init__(self, base_url = settings.TARGET_WEBSITE):
         self.url = base_url
 
-
     def get_main_categories(self) -> List[Tuple[str, str]]:
-        response = requests.get(self.base_url)
+        response = requests.get(self.url)
 
         if response.status_code != status.HTTP_200_OK:
             raise Exception(f"Failed to fetch main page: {response.status_code}")
@@ -24,7 +23,7 @@ class PDFScraper:
             submenu = dropdown.find("ul", class_="dropdown-menu multi-level")
             for item in submenu.find_all("li", class_="dropdown-submenu"):
                 title = item.a.text.strip()
-                link = urljoin(self.base_url, item.a["href"])
+                link = urljoin(self.url, item.a["href"])
                 categories.append((title, link))
         
         return categories
@@ -37,7 +36,7 @@ class PDFScraper:
         
         for sub in soup.find_all("h2"):
             file_title = sub.a.text.strip()
-            sub_link = urljoin(self.base_url, sub.a["href"])
+            sub_link = urljoin(self.url, sub.a["href"])
 
             sub_info_div = sub.find_next("div", class_="inline-info") 
             sub_title_tag = sub_info_div.find("span", class_="lineage-item lineage-item-level-0") 
@@ -54,7 +53,7 @@ class PDFScraper:
         file_link_tag = soup.find("a", href=True, text="Download")
 
         if file_link_tag:
-            file_url = urljoin(self.base_url, file_link_tag["href"])
+            file_url = urljoin(self.url, file_link_tag["href"])
             file_attr = file_link_tag['type'].split(';')
 
             file_type = file_attr[0]
