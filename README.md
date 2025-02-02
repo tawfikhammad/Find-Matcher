@@ -1,6 +1,6 @@
 # Legal Matcher
 
-Legal Matcher is an application designed to scrape, process, and match documents from a legal website (Egyption legal website). It uses web scraping to collect PDF documents, processes them to extract text, and stores them in a vector database for efficient searching and matching.
+Legal Matcher is an application designed to scrape, process, and match documents from a legal website (Egyption website). It uses web scraping to collect PDF documents, processes them to extract text, and stores them in a vector database for efficient searching and matching.
 
 ---
 
