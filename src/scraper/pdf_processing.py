@@ -7,16 +7,15 @@ class PDFProcessor:
     def __init__(self):
         self.logger = logging.getLogger(__name__)
 
-    @classmethod
     async def process_pdf(self, file_path: str, file_title: str, sub_url: str, category: str, subcategory: str) -> Optional[dict]:
         try:
-            scan, message = ScanChecker.is_scan(file_path)
+            scan, message = await ScanChecker.is_scan(file_path)
             if scan:
                 os.remove(file_path)
+                self.logger.warning(f"Removed scanned PDF: {file_path}")
                 return None
-
             else: 
-                text = GetText.get_nativepdf_text(file_path)
+                text = await GetText.get_nativepdf_text(file_path)
                 pdf_filename = os.path.basename(file_path)
 
                 return {
