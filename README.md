@@ -75,7 +75,8 @@ Legal Matcher/
 1. **Run the Scraper**:
    - Execute the scraper to download and process PDFs:
      ```bash
-     python src/run_scraper.py
+     cd src
+     python run_scraper.py
      ```
    - This will scrape PDFs from the target website, process them, and store them in the vector database.
 
@@ -100,7 +101,7 @@ Legal Matcher/
 ## Limitations
 
 * **Target Website Dependency**:
-   - The scraper is designed to work with a specific website (`manshurat.org`). Changes to the website's structure may break the scraper.
+  The scraper is designed to work with a specific website (`manshurat.org`). Changes to the website's structure may break the scraper.
 
 
 ---
