@@ -1,8 +1,8 @@
 import logging
 from config import settings
-from scraper import PDFScraper, GetFile
-from helper import FileValidator
-from scraper import PDFProcessor
+from scrape import PDFScraper
+from helper import FileValidator, FileParser, GetFilePath
+from .srcaped_data_controller import PDFProcessor
 from database import VectorDBManager
 
 class ScrapeController:
@@ -36,7 +36,7 @@ class ScrapeController:
                     self.logger.error(f"Invalid file: {file_title} - {message}")
                     continue
 
-                file_path = await GetFile().file_path(file_url, category, subcategory)
+                file_path = await GetFilePath().file_path(file_url, category, subcategory)
 
                 # Process and store
                 processor = PDFProcessor()
