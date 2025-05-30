@@ -1,7 +1,7 @@
 import os
 import logging
 from typing import Optional
-from helper import ScanChecker, GetText
+from helper import ScanChecker, FileParser
 
 class PDFProcessor:
     def __init__(self):
@@ -15,7 +15,7 @@ class PDFProcessor:
                 self.logger.warning(f"Removed scanned PDF: {file_path}")
                 return None
             else: 
-                text = await GetText.get_nativepdf_text(file_path)
+                text = await FileParser.get_nativepdf_text(file_path)
                 pdf_filename = os.path.basename(file_path)
 
                 return {

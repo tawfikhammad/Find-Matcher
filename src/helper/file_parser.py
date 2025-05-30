@@ -5,7 +5,7 @@ from config import settings
 import pytesseract
 pytesseract.pytesseract.tesseract_cmd =  settings.TESSERACT_CMD
 
-class GetText:
+class FileParser:
     
     @staticmethod
     async def get_nativepdf_text(file_path) -> str:
