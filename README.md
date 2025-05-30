@@ -9,41 +9,15 @@ Legal Matcher is an application designed to scrape, process, and match documents
 ```
 Legal Matcher/
 ├── src/
-│   ├── .env                    
-│   ├── .env.example            
-│   ├── .gitignore              
-│   ├── main.py                 # FastAPI application entry point
-│   ├── requirements.txt        
-│   ├── run_scraper.py          # Script to run the web scraper
+│   ├── main.py                 # FastAPI application
 │   ├── config/
-│   │   ├── settings.py         
-│   │   └── __init__.py         
 │   ├── controller/
-│   │   ├── scrape_controller.py
-│   │   └── __init__.py         
-│   ├── database/
-│   │   ├── vector_db.py        
-│   │   └── __init__.py         
+│   ├── vector_db/
+|   |   ├── providers/
 │   ├── helper/
-│   │   ├── file_validator.py   
-│   │   ├── get_text.py         
-│   │   ├── scan_checker.py     
 │   │   ├── enums/
-|   |   |   ├── enums.py
-|   |   |   └── __init__.py
-│   │   └── __init__.py         
 │   ├── route/
-│   │   ├── base.py             
-│   │   ├── search.py           
-│   │   └── __init__.py         
-│   ├── scraper/
-│   │   ├── file_scraper.py    
-│   │   ├── get_file.py         
-│   │   ├── pdf_processing.py   
-│   │   └── __init__.py         
-│   └── scraped_pdfs/           
-│   └── vector_db_data/         
-└── README.md                   
+│   ├── scrape/
 ```
 
 ---
@@ -51,10 +25,12 @@ Legal Matcher/
 ## How to Use the App
 
 ### Prerequisites
+
 1. **Python 3.9+**
 2. **Environment Variables**: Create a `.env` file in the `src` directory based on `.env.example`.
 
 ### Installation
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/tawfikhammad/Find-Matcher.git
@@ -72,7 +48,9 @@ Legal Matcher/
    - Configure other settings as needed (e.g., `MAX_FILE_SIZE`, `ALLOWED_FILE_TYPES`).
 
 ### Running the Application
+
 1. **Run the Scraper**:
+
    - Execute the scraper to download and process PDFs:
      ```bash
      cd src
@@ -81,6 +59,7 @@ Legal Matcher/
    - This will scrape PDFs from the target website, process them, and store them in the vector database.
 
 2. **Run the FastAPI Server**:
+
    - Start the FastAPI server:
      ```bash
      python main.py
@@ -100,13 +79,13 @@ Legal Matcher/
 
 ## Limitations
 
-* **Target Website Dependency**:
+- **Target Website Dependency**:
   The scraper is designed to work with a specific website (`manshurat.org`). Changes to the website's structure may break the scraper.
-
 
 ---
 
 ## License
+
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
