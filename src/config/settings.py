@@ -5,12 +5,12 @@ from typing import List
 class Settings(BaseSettings):
     
     # Vector Database
-    VECTOR_DB_NAME: str = "legal_docs"
     VECTOR_DB_MODEL: str = "all-MiniLM-L6-v2"
-    VECTOR_DB_DIR: Path = Path(__file__).parent.parent / "vector_db_data"
+    VECTOR_DB_DISTANCE_METHOD : str = "cosine"
+    VECTOR_DB_DIR: Path = Path(__file__).parent.parent / "vector_db" / "vector_db_data"
     
     # File Handling
-    SCRAPED_DIR: Path = Path(__file__).parent.parent / "scraped_pdfs"
+    SCRAPED_DIR: Path = Path(__file__).parent.parent / "vector_db" / "scraped_pdfs"
     MAX_FILE_SIZE: int = 3145728
     ALLOWED_FILE_TYPES: list = ["application/pdf"]
     TARGET_WEBSITE: str = "https://manshurat.org/"
@@ -31,8 +31,8 @@ class Settings(BaseSettings):
     @property
     def vector_db_config(self) -> dict:
         return {
-            "name": self.VECTOR_DB_NAME,
             "embedding_model": self.VECTOR_DB_MODEL,
+            "distance_method": self.VECTOR_DB_DISTANCE_METHOD,
             "path": str(self.VECTOR_DB_DIR)
         }
 
